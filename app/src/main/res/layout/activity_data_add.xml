@@ -40,7 +40,6 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/name"
-                    android:text="@={viewModel.emp.name}"
                     android:textColor="@color/black"
                     android:textColorHint="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +61,6 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/exNumber"
-                    android:text="@={viewModel.emp.exNum}"
                     android:textColorHint="#00000000" />
             </com.google.android.material.textfield.TextInputLayout>
 

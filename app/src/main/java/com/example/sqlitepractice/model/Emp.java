@@ -4,13 +4,13 @@ public class Emp {
     private Integer id;
     private String name;
     private String exNum;
-    private String dept;
-    private Integer jobTitle;
+    private static String dept;
+    private static String jobTitle;
 
     public Emp() {
     }
 
-    public Emp(Integer id, String name, String exNum, String dept, Integer jobTitle) {
+    public Emp(Integer id, String name, String exNum, String dept, String jobTitle) {
         this.id = id;
         this.name = name;
         this.exNum = exNum;
@@ -42,7 +42,7 @@ public class Emp {
         this.exNum = exNum;
     }
 
-    public String getDept() {
+    public static String getDept() {
         return dept;
     }
 
@@ -50,11 +50,11 @@ public class Emp {
         this.dept = dept;
     }
 
-    public Integer getJobTitle() {
+    public static String getJobTitle() {
         return jobTitle;
     }
 
-    public void setJobTitle(Integer jobTitle) {
+    public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
 

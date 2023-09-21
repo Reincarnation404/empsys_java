@@ -15,16 +15,16 @@ public class EmpViewModel extends ViewModel {
         return emp;
     }
 
-    public String titleToString(){
-        switch (emp.getValue().getJobTitle()){
-            case 1:
-                return "部長";
-            case 2:
-                return "經理";
-            case 3:
-                return "員工";
-            default:
-                return "???";
-        }
-    }
+//    public String titleToString(){
+//        switch (emp.getValue().getJobTitle()){
+//            case 1:
+//                return "部長";
+//            case 2:
+//                return "經理";
+//            case 3:
+//                return "員工";
+//            default:
+//                return "???";
+//        }
+//    }
 }

@@ -1,5 +1,6 @@
 package com.example.sqlitepractice;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,9 +36,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                     JOBTITLE + " TEXT NOT NULL);";
     public static final String drop_table= "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    public SQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-
+    public SQLiteHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, VERSION);
     }
 
 
@@ -52,7 +52,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public List<Emp> getAllData(){
+    public ArrayList<Emp> getAllData(){
         ArrayList<Emp> emplist = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
@@ -62,13 +62,32 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             Emp emp = new Emp();
             emp.setId(cursor.getInt(0));
             emp.setName(cursor.getString(1));
-            //未完
-
-
-            
+            emp.setExNum(cursor.getString(2));
+            emp.setDept(cursor.getString(3));
+            emp.setJobTitle(cursor.getString(4));
+            emplist.add(emp);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        cursor.close();
+        db.close();
         return emplist;
     }
 
+//    public void insertData(Emp e){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put(NAME, e.getName());
+//        cv.put(EXNUM, e.getExNum());
+//        cv.put(DEPT, e.getDept());
+//        cv.put(JOBTITLE, e.getJobTitle());
+//        db.insert(TABLE_NAME, null, cv);
+//        db.close();
+//    }
+
+    public void deleteByIdEZ(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_NAME,"id = " + id,null);
+    }
 
 }
